@@ -75,11 +75,12 @@
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
     form label {
       font-weight: 600;
-      display: block;
-      margin-bottom: 8px;
       color: #204051;
     }
     form textarea {
@@ -91,10 +92,65 @@
       border-radius: 8px;
       resize: vertical;
       min-height: 80px;
-      margin-bottom: 15px;
     }
     form button {
+      align-self: flex-start;
       background-color: #204051;
       color: white;
       padding: 12px 25px;
       border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background-color: #16323f;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ลืมอดีต</h1>
+    <p class="subtitle">คำคมสอนใจ เพื่อชีวิตที่ดีขึ้น</p>
+    <img
+      class="header-img"
+      src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+      alt="ธรรมชาติ สอนใจ"
+    />
+  </header>
+
+  <div class="quotes-container" id="quotes-container">
+    <div class="quote">“อย่าให้ความล้มเหลวในอดีต มาหยุดยั้งความฝันของคุณ”</div>
+    <div class="quote">“การเริ่มต้นใหม่ คือก้าวแรกของความสำเร็จ”</div>
+  </div>
+
+  <form id="quote-form">
+    <label for="quote-input">เพิ่มคำคมใหม่ของคุณ:</label>
+    <textarea id="quote-input" placeholder="พิมพ์คำคมที่นี่..."></textarea>
+    <button type="submit">ส่งคำคม</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('quote-form');
+    const textarea = document.getElementById('quote-input');
+    const quotesContainer = document.getElementById('quotes-container');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const newQuote = textarea.value.trim();
+      if (newQuote.length === 0) {
+        alert('กรุณาใส่คำคมก่อนส่งครับ');
+        return;
+      }
+
+      const quoteDiv = document.createElement('div');
+      quoteDiv.classList.add('quote');
+      quoteDiv.textContent = `“${newQuote}”`;
+
+      quotesContainer.appendChild(quoteDiv);
+      textarea.value = '';
+    });
+  </script>
+</body>
+</html>
