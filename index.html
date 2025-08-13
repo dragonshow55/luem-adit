@@ -1,61 +1,54 @@
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    /* Background image for whole page */
+    /* Reset & Base */
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: 'Roboto', sans-serif;
       margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #0d47a1;
       color: #f0f0f0;
-      background: url('https://images.unsplash.com/photo-1505842673457-98c58a071d4b?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
-      background-size: cover;
-      position: relative;
       min-height: 100vh;
       overflow-x: hidden;
     }
-
-    /* Overlay to darken background for readability */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0,0,0,0.65);
-      z-index: -1;
-    }
-
     header {
-      background: rgba(13, 71, 161, 0.85);
-      padding: 25px 0;
-      text-align: center;
-      font-size: 3rem;
-      letter-spacing: 2px;
-      color: #ffd700;
+      background: #0b3d91;
+      padding: 30px 15px;
       font-family: 'Roboto Slab', serif;
-      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+      font-weight: 700;
+      font-size: 3rem;
+      text-align: center;
+      color: #ffd700;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      position: relative;
-      z-index: 1;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-
     nav {
-      background: rgba(17, 74, 142, 0.85);
+      background: #114a8e;
       display: flex;
       justify-content: center;
       gap: 40px;
-      padding: 15px 0;
-      font-weight: 500;
-      font-size: 1.2rem;
-      box-shadow: inset 0 -2px 5px rgba(255, 255, 255, 0.1);
-      position: relative;
-      z-index: 1;
+      padding: 18px 0;
+      font-weight: 600;
+      font-size: 1.3rem;
+      box-shadow: inset 0 -2px 5px rgba(255, 255, 255, 0.12);
+      position: sticky;
+      top: 88px;
+      z-index: 900;
     }
-
     nav a {
       color: #d4d4d4;
       text-decoration: none;
+      padding-bottom: 6px;
       position: relative;
-      padding-bottom: 5px;
       transition: color 0.3s ease;
+      cursor: pointer;
     }
-
     nav a::after {
       content: '';
       position: absolute;
@@ -65,227 +58,111 @@
       left: 0;
       background-color: #ffd700;
       transition: width 0.3s ease;
-      border-radius: 2px;
+      border-radius: 3px;
     }
-
     nav a:hover {
       color: #ffd700;
     }
-
     nav a:hover::after {
       width: 100%;
     }
 
+    /* Container & Layout */
     .container {
       max-width: 1200px;
-      margin: 40px auto;
+      margin: 40px auto 60px;
+      padding: 0 15px;
       display: flex;
       gap: 30px;
-      padding: 0 15px;
       position: relative;
       z-index: 1;
     }
-
     .news-sections {
       flex: 3;
       display: flex;
       flex-direction: column;
-      gap: 35px;
+      gap: 40px;
     }
 
-    /* Different backgrounds for each news section */
+    /* Section styles with different backgrounds and images */
     section.news-latest {
-      background: rgba(34, 139, 34, 0.75); /* Forest Green */
-      border-radius: 15px;
-      padding: 20px 30px;
-      box-shadow: 0 8px 20px rgba(34, 139, 34, 0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: url('https://images.unsplash.com/photo-1505842673457-98c58a071d4b?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      border-radius: 18px;
+      padding: 30px 35px;
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(33, 150, 243, 0.7);
+      position: relative;
+      overflow: hidden;
       cursor: default;
+      transition: transform 0.3s ease;
     }
-
+    section.news-latest::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(34, 139, 34, 0.7);
+      z-index: 0;
+      border-radius: 18px;
+    }
+    section.news-latest h2, section.news-latest p {
+      position: relative;
+      z-index: 1;
+    }
     section.news-latest:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.7);
+      transform: translateY(-7px);
+      box-shadow: 0 15px 40px rgba(33, 150, 243, 0.9);
     }
 
     section.news-market {
-      background: rgba(218, 165, 32, 0.8); /* Goldenrod */
-      border-radius: 15px;
-      padding: 20px 30px;
-      box-shadow: 0 8px 20px rgba(218, 165, 32, 0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
-      color: #0d1b00;
-    }
-
-    section.news-market:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.7);
+      background: url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      border-radius: 18px;
+      padding: 30px 35px;
       color: #000;
+      box-shadow: 0 8px 30px rgba(218, 165, 32, 0.8);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: transform 0.3s ease;
     }
-
-    section h2 {
-      margin-bottom: 18px;
-      font-family: 'Roboto Slab', serif;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-shadow: 0 0 6px #ffd700;
+    section.news-market::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(218, 165, 32, 0.75);
+      z-index: 0;
+      border-radius: 18px;
+    }
+    section.news-market h2, section.news-market p {
+      position: relative;
+      z-index: 1;
+    }
+    section.news-market:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 15px 40px rgba(218, 165, 32, 1);
     }
 
     .matches {
       flex: 1.2;
-      background: rgba(47, 79, 79, 0.8); /* Dark Slate Gray */
-      border-radius: 15px;
-      padding: 20px 25px;
-      box-shadow: 0 8px 20px rgba(47, 79, 79, 0.7);
+      background: url('https://images.unsplash.com/photo-1518098268026-4e89f7a56f59?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+      border-radius: 18px;
+      padding: 30px 25px;
       color: #ffd700;
       font-weight: 600;
       font-size: 1rem;
-      user-select: none;
-      transition: box-shadow 0.3s ease;
-      cursor: default;
-    }
-
-    .matches:hover {
-      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.7);
-    }
-
-    .match-item {
-      border-bottom: 1px solid rgba(255, 215, 0, 0.3);
-      padding: 10px 0;
-      font-size: 0.95rem;
-      letter-spacing: 0.03em;
-      transition: background-color 0.3s ease;
-      cursor: default;
-    }
-
-    .match-item:hover {
-      background-color: rgba(255, 215, 0, 0.15);
-      border-radius: 6px;
-    }
-
-    .match-item:last-child {
-      border-bottom: none;
-    }
-
-    .tip-box {
-      max-width: 900px;
-      margin: 50px auto 60px;
-      background: #ffd700;
-      padding: 30px 40px;
-      border-radius: 20px;
-      text-align: center;
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #0d47a1;
-      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
-      user-select: none;
-      letter-spacing: 1px;
+      box-shadow: 0 8px 30px rgba(47, 79, 79, 0.8);
       position: relative;
-      z-index: 1;
+      overflow: hidden;
+      cursor: default;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
-
-    footer {
-      background: rgba(17, 74, 142, 0.85);
-      padding: 25px 15px;
-      text-align: center;
-      color: #ddd;
-      font-size: 0.9rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .banner-sponsor img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 6px 15px rgba(255, 215, 0, 0.7);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-
-    .banner-sponsor img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Background pattern of footballs for container */
-    .container::before {
-      content: "";
+    .matches::before {
+      content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url('https://www.transparenttextures.com/patterns/soccer-ball.png');
-      background-repeat: repeat;
-      opacity: 0.05;
-      pointer-events: none;
+      inset: 0;
+      background: rgba(47, 79, 79, 0.8);
+      border-radius: 18px;
       z-index: 0;
-      border-radius: 15px;
     }
-
-    /* Responsive */
-    @media (max-width: 960px) {
-      .container {
-        flex-direction: column;
-        margin: 30px auto;
-        gap: 25px;
-        position: relative;
-      }
-      .matches {
-        order: -1;
-      }
-      .tip-box {
-        margin: 40px 15px 50px;
-        font-size: 1.3rem;
-        padding: 25px 30px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <header>ข่าวกีฬาฟุตบอล</header>
-
-  <nav>
-    <a href="#">ข่าวล่าสุด</a>
-    <a href="#">ตารางคะแนน</a>
-    <a href="#">ตลาดนักเตะ</a>
-    <a href="#">วิเคราะห์</a>
-    <a href="#">ติดต่อ</a>
-  </nav>
-
-  <div class="container">
-    <div class="news-sections">
-      <section class="news-latest">
-        <h2>ข่าวล่าสุด</h2>
-        <p>• แมนฯ ซิตี้ ชนะเชลซี 3-1</p>
-        <p>• ลิเวอร์พูลเตรียมเสริมทัพช่วงตลาดนักเตะ</p>
-        <p>• ไทยลีก นัดล่าสุด อุบลชนะเชียงราย 2-0</p>
-      </section>
-
-      <section class="news-market">
-        <h2>ตลาดนักเตะซื้อขาย & ยืมตัว</h2>
-        <p>• โรนัลโด้ย้ายซบสโมสรใหม่</p>
-        <p>• ลิเวอร์พูลยืมตัวนักเตะดาวรุ่ง</p>
-        <p>• ตลาดซื้อขายเปิดวันที่ 1 ก.ค.</p>
-      </section>
-    </div>
-
-    <aside class="matches">
-      <h2>ตารางแข่งขัน (เวลาประเทศไทย)</h2>
-      <div class="match-item">16:00 น. - ลิเวอร์พูล vs แมนฯ ยูไนเต็ด</div>
-      <div class="match-item">19:00 น. - เชลซี vs อาร์เซนอล</div>
-      <div class="match-item">21:30 น. - แมนฯ ซิตี้ vs ท็อตแน่ม</div>
-    </aside>
-  </div>
-
-  <div class="tip-box">
-    ทีเด็ดวันนี้: แมนฯ ยูไนเต็ดชนะ, ลิเวอร์พูลเสมอ, เชลซีแพ้
-  </div>
-
-  <footer>
-    <div class="banner-sponsor">
-      <img src="https://via.placeholder.com/1200x100?text=Banner+Sponsor+Placeholder" alt="สปอนเซอร์" />
-    </div>
-    <p>&copy; 2025 เว็บไซต์ข่าวกีฬาฟุตบอล</p>
-  </footer>
-</body>
+    .matches:hover {
+      box-shadow: 0 15px 40px rgba(255, 215, 0, 0.85);
+      transform: translat
