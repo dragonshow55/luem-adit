@@ -1,136 +1,22 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <title>ข่าวฟุตบอลสไตล์ ESPN</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    /* Reset และฟอนต์ */
-    * {
-      box-sizing: border-box;
-      margin: 0; padding: 0;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
-      color: #eee;
-      line-height: 1.6;
-    }
-    a {
-      color: #1ea1f2;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* เมนูด้านบน */
-    nav {
-      background: #0d47a1;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #ffd700;
-      letter-spacing: 2px;
-      user-select: none;
-    }
-    nav ul {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
-    nav ul li {
-      font-weight: 600;
-    }
-
-    /* คอนเทนต์หลัก */
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 0 15px;
-    }
-
-    /* ข่าวเด่นใหญ่ */
-    .headline {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-    .headline .main-news {
-      flex: 2;
-      background: #1e2a47;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .headline .main-news:hover {
-      transform: scale(1.03);
-    }
-    .headline .main-news img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
-    }
-    .headline .main-news h2 {
-      padding: 15px;
-      font-size: 1.8rem;
-      color: #ffd700;
-    }
-
-    .headline .side-news {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .headline .side-news .news-item {
-      background: #1e2a47;
-      border-radius: 10px;
-      overflow: hidden;
-      display: flex;
-      gap: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .headline .side-news .news-item:hover {
-      background: #344973;
-    }
-    .headline .side-news .news-item img {
-      width: 120px;
-      height: 80px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-    .headline .side-news .news-item h3 {
-      font-size: 1rem;
-      padding: 10px;
-      color: #ffd700;
-      align-self: center;
-    }
-
-    /* ทีเด็ดวันนี้ */
-    .tip-box {
-      background: #0d47a1;
-      padding: 20px;
-      border-radius: 10px;
-      color: #ffd700;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 30px;
-      box-shadow: 0 6px 18px rgba(255, 215, 0, 0.5);
-    }
-
-    /* ข่าวล่าสุด */
-    .latest-news {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เว็บไซต์ข่าวฟุตบอล</title>
+</head>
+<body>
+  <header>
+    <h1>ข่าวฟุตบอลวันนี้</h1>
+  </header>
+  <main>
+    <section id="news">
+      <h2>ข่าวเด่น</h2>
+      <p>ข้อมูลข่าวจะถูกดึงมาจากแหล่งต่าง ๆ...</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 เว็บไซต์ข่าวฟุตบอล</p>
+  </footer>
+</body>
+</html>
