@@ -1,105 +1,121 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>เว็บข่าวฟุตบอลสด + ตารางแข่ง + ทีเด็ดวันนี้</title>
-<style>
-  /* ... (ใช้ CSS เดิมเหมือนที่คุณมี) ... */
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>แจกภาพหมาแมว ดาวน์โหลดฟรี</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Prompt', sans-serif;
+      background: #fffaf4;
+      color: #333;
+    }
+    header {
+      background: #ffb347;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card button {
+      background: #ff914d;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .card button:hover {
+      background: #e9783d;
+    }
+    .upload-btn {
+      display: block;
+      margin: 30px auto;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .upload-btn:hover {
+      background: #45a049;
+    }
+  </style>
 </head>
 <body>
 
-<header>ข่าวฟุตบอลสด ตารางแข่ง ทีเด็ดวันนี้</header>
+<header>แจกภาพหมาแมว โหลดฟรี 🐶🐱</header>
 
 <main>
-  <section id="section-matches">
-    <h2>ตารางแข่งขันวันนี้ (ตามเวลาประเทศไทย)</h2>
-    <table id="match-table">
-      <thead>
-        <tr>
-          <th>ลีก</th>
-          <th>เวลา</th>
-          <th>คู่แข่งขัน</th>
-          <th>สถานะ</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td colspan="4">กำลังโหลดข้อมูล...</td></tr>
-      </tbody>
-    </table>
-  </section>
+  <button class="upload-btn" onclick="alert('ฟีเจอร์อัปโหลดจะใช้งานได้เมื่อคุณโฮสต์ผ่านเซิร์ฟเวอร์ที่รองรับ เช่น Firebase')">+ อัปโหลดรูปใหม่</button>
 
-  <section id="section-news">
-    <h2>ข่าวฟุตบอลล่าสุด (จาก siamsport)</h2>
-    <ul id="news-list">
-      <li><a href="https://www.siamsport.co.th/football/thailand-football/1304561" target="_blank" rel="noopener noreferrer">ข่าวที่ 1: ลิเวอร์พูลได้แชมป์พรีเมียร์ลีก</a></li>
-      <li><a href="https://www.siamsport.co.th/football/thailand-football/1304570" target="_blank" rel="noopener noreferrer">ข่าวที่ 2: แมนยูเตรียมเสริมทัพใหม่</a></li>
-      <li><a href="https://www.siamsport.co.th/football/thailand-football/1304580" target="_blank" rel="noopener noreferrer">ข่าวที่ 3: บาร์เซโลนาเตรียมเปิดตัวนักเตะใหม่</a></li>
-      <!-- ใส่ลิงก์ข่าวเพิ่มตามต้องการ -->
-    </ul>
-  </section>
-
-  <section id="section-tip">
-    <h2>ทีเด็ดวันนี้</h2>
-    <div id="tip-today">
-    ⚽️ ลิเวอร์พูล ฟอร์มดี ชนะต่อเนื่อง! แนะนำเชียร์ลิเวอร์พูลในวันนี้! ⚽️
+  <section class="gallery">
+    <div class="card">
+      <img src="https://images.pexels.com/photos/4587993/pexels-photo-4587993.jpeg" alt="น้องแมว">
+      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="น้องหมา">
+      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/271889/pexels-photo-271889.jpeg" alt="แมวนอน">
+      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/979247/pexels-photo-979247.jpeg" alt="หมากำลังยิ้ม">
+      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/208984/pexels-photo-208984.jpeg" alt="แมวตาโต">
+      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/573246/pexels-photo-573246.jpeg" alt="หมากับหญ้า">
+      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
     </div>
   </section>
 </main>
 
 <script>
-  // ======= ตัวแปร API KEY =======
-  const THESPORTSDB_API_KEY = '1'; // ใช้ '1' ฟรีเดโม
-
-  // ======= ฟังก์ชันดึงตารางแข่งขันวันนี้จาก TheSportsDB =======
-  async function fetchMatches() {
-    const date = new Date().toISOString().slice(0,10); // yyyy-mm-dd
-    const url = `https://www.thesportsdb.com/api/v1/json/${THESPORTSDB_API_KEY}/eventsday.php?d=${date}&s=Soccer`;
-
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      const tbody = document.querySelector('#match-table tbody');
-      tbody.innerHTML = '';
-
-      if(!data.events) {
-        tbody.innerHTML = '<tr><td colspan="4">ไม่มีแมตช์ในวันนี้</td></tr>';
-        return;
-      }
-
-      data.events.forEach(event => {
-        // แปลงเวลา UTC+0 เป็นเวลาไทย (UTC+7)
-        const utcTime = event.strTime; // "15:00:00"
-        const utcDateStr = event.dateEvent + 'T' + utcTime + 'Z'; // ISO format
-        const utcDate = new Date(utcDateStr);
-        const thailandOffset = 7 * 60; // 7 ชั่วโมงในนาที
-        const thailandTime = new Date(utcDate.getTime() + thailandOffset * 60000);
-        const hours = thailandTime.getHours().toString().padStart(2, '0');
-        const minutes = thailandTime.getMinutes().toString().padStart(2, '0');
-        const timeTH = `${hours}:${minutes}`;
-
-        let status = event.strStatus || (event.intHomeScore === null ? 'ยังไม่แข่ง' : 'กำลังแข่ง');
-
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${event.strLeague}</td>
-          <td>${timeTH}</td>
-          <td>${event.strHomeTeam} vs ${event.strAwayTeam}</td>
-          <td>${status}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    } catch (error) {
-      console.error('Error fetching matches:', error);
-      const tbody = document.querySelector('#match-table tbody');
-      tbody.innerHTML = '<tr><td colspan="4">เกิดข้อผิดพลาดในการโหลดข้อมูล</td></tr>';
-    }
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    fetchMatches();
-  });
+function downloadImage(btn) {
+  const img = btn.previousElementSibling;
+  const link = document.createElement('a');
+  link.href = img.src;
+  link.download = 'cute-animal.jpg';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 </script>
 
 </body>
