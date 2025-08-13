@@ -1,324 +1,225 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ข่าวฟุตบอลสด - ทีเด็ดวันนี้</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    /* Reset & Base */
-    * {
-      box-sizing: border-box;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>เว็บข่าวฟุตบอลสด + ตารางแข่ง + ทีเด็ดวันนี้</title>
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: #061622 url('https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
+    color: white;
+    margin: 0; padding: 0;
+  }
+  header {
+    background: rgba(0, 51, 102, 0.85);
+    padding: 20px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: #f4b41a;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+  }
+  main {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+  section {
+    background: rgba(0,0,0,0.6);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 15px 20px;
+  }
+  h2 {
+    color: #f4b41a;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f4b41a;
+    padding-bottom: 5px;
+  }
+  /* ตารางแข่ง */
+  #match-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  #match-table th, #match-table td {
+    border: 1px solid #f4b41a;
+    padding: 8px 12px;
+    text-align: center;
+  }
+  #match-table th {
+    background: #0a3d62;
+  }
+  #match-table tr:hover {
+    background: rgba(244, 180, 26, 0.3);
+    cursor: pointer;
+  }
+  /* ข่าว */
+  #news-list {
+    list-style: none;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  #news-list li {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f4b41a;
+  }
+  #news-list li a {
+    color: #f4b41a;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  #news-list li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  /* ทีเด็ดวันนี้ */
+  #tip-today {
+    background: #f4b41a;
+    color: #061622;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    #match-table th, #match-table td {
+      font-size: 0.85rem;
+      padding: 6px 8px;
     }
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: #0d47a1;
-      color: #f0f0f0;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-    header {
-      background: #0b3d91;
-      padding: 30px 15px;
-      font-family: 'Roboto Slab', serif;
-      font-weight: 700;
-      font-size: 3rem;
-      text-align: center;
-      color: #ffd700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav {
-      background: #114a8e;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 18px 0;
-      font-weight: 600;
-      font-size: 1.3rem;
-      box-shadow: inset 0 -2px 5px rgba(255, 255, 255, 0.12);
-      position: sticky;
-      top: 88px;
-      z-index: 900;
-    }
-    nav a {
-      color: #d4d4d4;
-      text-decoration: none;
-      padding-bottom: 6px;
-      position: relative;
-      transition: color 0.3s ease;
-      cursor: pointer;
-    }
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      bottom: 0;
-      left: 0;
-      background-color: #ffd700;
-      transition: width 0.3s ease;
-      border-radius: 3px;
-    }
-    nav a:hover {
-      color: #ffd700;
-    }
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    /* Container & Layout */
-    .container {
-      max-width: 1200px;
-      margin: 40px auto 60px;
-      padding: 0 15px;
-      display: flex;
-      gap: 30px;
-      position: relative;
-      z-index: 1;
-    }
-    .news-sections {
-      flex: 3;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    /* Section styles with different backgrounds and images */
-    section.news-latest {
-      background: url('https://images.unsplash.com/photo-1505842673457-98c58a071d4b?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
-      border-radius: 18px;
-      padding: 30px 35px;
-      color: #fff;
-      box-shadow: 0 8px 30px rgba(33, 150, 243, 0.7);
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-      transition: transform 0.3s ease;
-    }
-    section.news-latest::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(34, 139, 34, 0.7);
-      z-index: 0;
-      border-radius: 18px;
-    }
-    section.news-latest h2, section.news-latest p {
-      position: relative;
-      z-index: 1;
-    }
-    section.news-latest:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 15px 40px rgba(33, 150, 243, 0.9);
-    }
-
-    section.news-market {
-      background: url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
-      border-radius: 18px;
-      padding: 30px 35px;
-      color: #000;
-      box-shadow: 0 8px 30px rgba(218, 165, 32, 0.8);
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-      transition: transform 0.3s ease;
-    }
-    section.news-market::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(218, 165, 32, 0.75);
-      z-index: 0;
-      border-radius: 18px;
-    }
-    section.news-market h2, section.news-market p {
-      position: relative;
-      z-index: 1;
-    }
-    section.news-market:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 15px 40px rgba(218, 165, 32, 1);
-    }
-
-    .matches {
-      flex: 1.2;
-      background: url('https://images.unsplash.com/photo-1518098268026-4e89f7a56f59?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
-      border-radius: 18px;
-      padding: 30px 25px;
-      color: #ffd700;
-      font-weight: 600;
+    #tip-today {
       font-size: 1rem;
-      box-shadow: 0 8px 30px rgba(47, 79, 79, 0.8);
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
-    .matches::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(47, 79, 79, 0.8);
-      border-radius: 18px;
-      z-index: 0;
-    }
-    .matches:hover {
-      box-shadow: 0 15px 40px rgba(255, 215, 0, 0.85);
-      transform: translateY(-5px);
-    }
-    .matches h2, .matches .match-item {
-      position: relative;
-      z-index: 1;
-    }
-    .match-item {
-      border-bottom: 1px solid rgba(255, 215, 0, 0.3);
-      padding: 12px 0;
-      letter-spacing: 0.03em;
-      transition: background-color 0.3s ease;
-      cursor: default;
-    }
-    .match-item:last-child {
-      border-bottom: none;
-    }
-    .match-item:hover {
-      background-color: rgba(255, 215, 0, 0.18);
-      border-radius: 7px;
-    }
-
-    .tip-box {
-      max-width: 900px;
-      margin: 50px auto 60px;
-      background: linear-gradient(135deg, #ffd700, #ffa500);
-      padding: 35px 45px;
-      border-radius: 25px;
-      text-align: center;
-      font-size: 1.7rem;
-      font-weight: 800;
-      color: #0d47a1;
-      box-shadow: 0 10px 35px rgba(255, 165, 0, 0.75);
-      user-select: none;
-      letter-spacing: 1px;
-      position: relative;
-      z-index: 1;
-      transition: transform 0.3s ease;
-      cursor: default;
-    }
-    .tip-box:hover {
-      transform: scale(1.05);
-    }
-
-    footer {
-      background: #114a8e;
-      padding: 30px 15px;
-      text-align: center;
-      color: #ddd;
-      font-size: 0.9rem;
-      position: relative;
-      z-index: 1;
-    }
-    .banner-sponsor img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.75);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .banner-sponsor img:hover {
-      transform: scale(1.08);
-    }
-
-    /* Background pattern of footballs for container */
-    .container::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url('https://www.transparenttextures.com/patterns/soccer-ball.png');
-      background-repeat: repeat;
-      opacity: 0.05;
-      pointer-events: none;
-      z-index: 0;
-      border-radius: 20px;
-    }
-
-    /* Responsive */
-    @media(max-width: 980px) {
-      .container {
-        flex-direction: column;
-        margin: 20px auto 40px;
-      }
-      .matches {
-        order: -1;
-        width: 100%;
-        margin-bottom: 35px;
-      }
-    }
-    @media(max-width: 600px) {
-      header {
-        font-size: 2.2rem;
-      }
-      nav {
-        gap: 18px;
-        font-size: 1.1rem;
-      }
-      .tip-box {
-        font-size: 1.4rem;
-        padding: 25px 30px;
-        margin: 30px 15px 40px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>ข่าวกีฬาฟุตบอล</header>
-  <nav>
-    <a href="#latest">ข่าวล่าสุด</a>
-    <a href="#market">ตลาดนักเตะ</a>
-    <a href="#matches">ตารางแข่งขัน</a>
-    <a href="#tips">ทีเด็ดวันนี้</a>
-  </nav>
 
-  <main class="container">
-    <div class="news-sections">
-      <section id="latest" class="news-latest">
-        <h2>ข่าวล่าสุด</h2>
-        <p>ข่าวสารฟุตบอลล่าสุดจากทั่วโลก พร้อมลิงก์ไปยังเว็บไซต์ต้นทาง</p>
-      </section>
+<header>ข่าวฟุตบอลสด ตารางแข่ง ทีเด็ดวันนี้</header>
 
-      <section id="market" class="news-market">
-        <h2>ตลาดนักเตะ</h2>
-        <p>อัปเดตตลาดซื้อขายนักเตะล่าสุด พร้อมรายละเอียดและข่าวลือที่น่าสนใจ</p>
-      </section>
-    </div>
-
-    <aside class="matches">
-      <h2>ตารางแข่งขัน</h2>
-      <div class="match-item">12:30 ไทยลีก - ทีม A vs ทีม B</div>
-      <div class="match-item">15:00 พรีเมียร์ลีก - ทีม C vs ทีม D</div>
-      <div class="match-item">18:00 ลาลีกา - ทีม E vs ทีม F</div>
-      <div class="match-item">20:45 บุนเดสลีกา - ทีม G vs ทีม H</div>
-    </aside>
-  </main>
-
-  <section id="tips" class="tip-box">
-    ทีเด็ดวันนี้: ทีม A จะชนะด้วยสกอร์ 2-1
+<main>
+  <section id="section-matches">
+    <h2>ตารางแข่งขันวันนี้ (ตามเวลาประเทศไทย)</h2>
+    <table id="match-table">
+      <thead>
+        <tr>
+          <th>ลีก</th>
+          <th>เวลา</th>
+          <th>คู่แข่งขัน</th>
+          <th>สถานะ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="4">กำลังโหลดข้อมูล...</td></tr>
+      </tbody>
+    </table>
   </section>
 
-  <footer>
-    <div class="banner-sponsor">
-      <a href="https://sponsorlink.example.com" target="_blank" rel="noopener noreferrer">
-        <img src="https://via.placeholder.com/1200x120.png?text=สปอนเซอร์+ของเรา" alt="สปอนเซอร์" />
-      </a>
+  <section id="section-news">
+    <h2>ข่าวฟุตบอลล่าสุด</h2>
+    <ul id="news-list">
+      <li>กำลังโหลดข่าว...</li>
+    </ul>
+  </section>
+
+  <section id="section-tip">
+    <h2>ทีเด็ดวันนี้</h2>
+    <div id="tip-today">
+     ⚽️ ลิเวอร์พูล ฟอร์มดี ชนะต่อเนื่อง! แนะนำเชียร์ลิเวอร์พูลในวันนี้! ⚽️
     </div>
-    &copy; 2025 ข่าวกีฬาฟุตบอล - สงวนลิขสิทธิ์
-  </footer>
+  </section>
+</main>
+
+<script>
+  // ======= ตัวแปร API KEY =======
+  const THESPORTSDB_API_KEY = '1'; // ใช้ '1' เป็น key ฟรีเดโมได้เลย (แต่ข้อมูลจำกัด)
+  const NEWSAPI_API_KEY = 'YOUR_NEWSAPI_KEY'; // ไปสมัคร https://newsapi.org/
+
+  // ======= ฟังก์ชันดึงตารางแข่งขันวันนี้จาก TheSportsDB =======
+  async function fetchMatches() {
+    const date = new Date().toISOString().slice(0,10); // yyyy-mm-dd
+    const url = `https://www.thesportsdb.com/api/v1/json/${THESPORTSDB_API_KEY}/eventsday.php?d=${date}&s=Soccer`;
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      const tbody = document.querySelector('#match-table tbody');
+      tbody.innerHTML = '';
+
+      if(!data.events) {
+        tbody.innerHTML = '<tr><td colspan="4">ไม่มีแมตช์ในวันนี้</td></tr>';
+        return;
+      }
+
+      data.events.forEach(event => {
+        // แปลงเวลา UTC+0 เป็นเวลาไทย (UTC+7)
+        const utcTime = event.strTime; // "15:00:00"
+        const utcDateStr = event.dateEvent + 'T' + utcTime + 'Z'; // ISO format
+        const utcDate = new Date(utcDateStr);
+        const thailandOffset = 7 * 60; // 7 ชั่วโมงในนาที
+        const thailandTime = new Date(utcDate.getTime() + thailandOffset * 60000);
+        const hours = thailandTime.getHours().toString().padStart(2, '0');
+        const minutes = thailandTime.getMinutes().toString().padStart(2, '0');
+        const timeTH = `${hours}:${minutes}`;
+
+        // สถานะ
+        let status = event.strStatus || (event.intHomeScore === null ? 'ยังไม่แข่ง' : 'กำลังแข่ง');
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${event.strLeague}</td>
+          <td>${timeTH}</td>
+          <td>${event.strHomeTeam} vs ${event.strAwayTeam}</td>
+          <td>${status}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    } catch (error) {
+      console.error('Error fetching matches:', error);
+      const tbody = document.querySelector('#match-table tbody');
+      tbody.innerHTML = '<tr><td colspan="4">เกิดข้อผิดพลาดในการโหลดข้อมูล</td></tr>';
+    }
+  }
+
+  // ======= ฟังก์ชันดึงข่าวฟุตบอลจาก NewsAPI =======
+  async function fetchNews() {
+    const newsList = document.getElementById('news-list');
+    newsList.innerHTML = '<li>กำลังโหลดข่าว...</li>';
+
+    const url = `https://newsapi.org/v2/top-headlines?category=sports&q=football&language=th&pageSize=10&apiKey=${NEWSAPI_API_KEY}`;
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if(data.status !== 'ok' || data.articles.length === 0) {
+        newsList.innerHTML = '<li>ไม่พบข่าวฟุตบอลล่าสุด</li>';
+        return;
+      }
+
+      newsList.innerHTML = '';
+      data.articles.forEach(article => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="${article.url}" target="_blank" rel="noopener noreferrer">${article.title}</a>`;
+        newsList.appendChild(li);
+      });
+    } catch (error) {
+      console.error('Error fetching news:', error);
+      newsList.innerHTML = '<li>เกิดข้อผิดพลาดในการโหลดข่าว</li>';
+    }
+  }
+
+  // ======= โหลดข้อมูลเมื่อเปิดหน้าเว็บ =======
+  window.addEventListener('DOMContentLoaded', () => {
+    fetchMatches();
+    fetchNews();
+  });
+</script>
+
 </body>
 </html>
