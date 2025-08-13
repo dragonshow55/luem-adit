@@ -121,7 +121,7 @@
   </section>
 
   <section id="section-news">
-    <h2>ข่าวฟุตบอลล่าสุด</h2>
+    <h2>ข่าวฟุตบอลล่าสุดจาก siamsport</h2>
     <ul id="news-list">
       <li>กำลังโหลดข่าว...</li>
     </ul>
@@ -130,7 +130,7 @@
   <section id="section-tip">
     <h2>ทีเด็ดวันนี้</h2>
     <div id="tip-today">
-     ⚽️ ลิเวอร์พูล ฟอร์มดี ชนะต่อเนื่อง! แนะนำเชียร์ลิเวอร์พูลในวันนี้! ⚽️
+    ⚽️ ลิเวอร์พูล ฟอร์มดี ชนะต่อเนื่อง! แนะนำเชียร์ลิเวอร์พูลในวันนี้! ⚽️
     </div>
   </section>
 </main>
@@ -138,7 +138,6 @@
 <script>
   // ======= ตัวแปร API KEY =======
   const THESPORTSDB_API_KEY = '1'; // ใช้ '1' เป็น key ฟรีเดโมได้เลย (แต่ข้อมูลจำกัด)
-  const NEWSAPI_API_KEY = 'YOUR_NEWSAPI_KEY'; // ไปสมัคร https://newsapi.org/
 
   // ======= ฟังก์ชันดึงตารางแข่งขันวันนี้จาก TheSportsDB =======
   async function fetchMatches() {
@@ -186,30 +185,32 @@
     }
   }
 
-  // ======= ฟังก์ชันดึงข่าวฟุตบอลจาก NewsAPI =======
-  async function fetchNews() {
+  // ======= ฟังก์ชันดึงข่าวฟุตบอลจาก siamsport RSS =======
+  async function fetchSiamSportNews() {
+    const rssUrl = 'https://www.siamsport.co.th/rss/';
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
     const newsList = document.getElementById('news-list');
     newsList.innerHTML = '<li>กำลังโหลดข่าว...</li>';
 
-    const url = `https://newsapi.org/v2/top-headlines?category=sports&q=football&language=th&pageSize=10&apiKey=${NEWSAPI_API_KEY}`;
-
     try {
-      const res = await fetch(url);
+      const res = await fetch(apiUrl);
       const data = await res.json();
 
-      if(data.status !== 'ok' || data.articles.length === 0) {
-        newsList.innerHTML = '<li>ไม่พบข่าวฟุตบอลล่าสุด</li>';
+      if (!data.items || data.items.length === 0) {
+        newsList.innerHTML = '<li>ไม่พบข่าวจาก siamsport</li>';
         return;
       }
 
       newsList.innerHTML = '';
-      data.articles.forEach(article => {
+
+      data.items.slice(0, 10).forEach(item => {
         const li = document.createElement('li');
-        li.innerHTML = `<a href="${article.url}" target="_blank" rel="noopener noreferrer">${article.title}</a>`;
+        li.innerHTML = `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>`;
         newsList.appendChild(li);
       });
+
     } catch (error) {
-      console.error('Error fetching news:', error);
+      console.error('Error fetching siamsport news:', error);
       newsList.innerHTML = '<li>เกิดข้อผิดพลาดในการโหลดข่าว</li>';
     }
   }
@@ -217,7 +218,7 @@
   // ======= โหลดข้อมูลเมื่อเปิดหน้าเว็บ =======
   window.addEventListener('DOMContentLoaded', () => {
     fetchMatches();
-    fetchNews();
+    fetchSiamSportNews();
   });
 </script>
 
