@@ -2,117 +2,135 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>ข่าวฟุตบอลไทย & ทีเด็ดวันนี้</title>
+  <title>ข่าวฟุตบอลสไตล์ ESPN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    /* Reset และฟอนต์ */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: #fff;
-      margin: 0;
-      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      line-height: 1.6;
+    }
+    a {
+      color: #1ea1f2;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* เมนูด้านบน */
+    nav {
+      background: #0d47a1;
+      padding: 10px 20px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .container {
-      background: #121a2b;
-      border-radius: 15px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-      max-width: 720px;
-      width: 100%;
-      padding: 30px 25px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 15px;
-      color: #ffd700;
-      text-transform: uppercase;
-      text-shadow: 1px 1px 3px #000;
-    }
-    .tip-box {
-      background: #223355;
-      border-left: 6px solid #ffd700;
-      padding: 15px 20px;
-      margin-bottom: 30px;
-      border-radius: 8px;
-      font-size: 1.15rem;
-      box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
-    }
-    .tip-box h2 {
-      margin-top: 0;
-      color: #ffd700;
+    nav .logo {
       font-weight: 700;
-      text-shadow: 1px 1px 2px #000;
+      font-size: 1.5rem;
+      color: #ffd700;
+      letter-spacing: 2px;
+      user-select: none;
     }
-    #news {
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    nav ul li {
+      font-weight: 600;
+    }
+
+    /* คอนเทนต์หลัก */
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* ข่าวเด่นใหญ่ */
+    .headline {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .headline .main-news {
+      flex: 2;
+      background: #1e2a47;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .headline .main-news:hover {
+      transform: scale(1.03);
+    }
+    .headline .main-news img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    .headline .main-news h2 {
+      padding: 15px;
+      font-size: 1.8rem;
+      color: #ffd700;
+    }
+
+    .headline .side-news {
+      flex: 1;
       display: flex;
       flex-direction: column;
       gap: 15px;
     }
-    .news-item {
-      background: #1f2f4a;
+    .headline .side-news .news-item {
+      background: #1e2a47;
       border-radius: 10px;
-      padding: 15px 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      overflow: hidden;
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
       transition: background-color 0.3s ease;
     }
-    .news-item:hover {
-      background: #2a4374;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.7);
+    .headline .side-news .news-item:hover {
+      background: #344973;
     }
-    .news-item a {
+    .headline .side-news .news-item img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .headline .side-news .news-item h3 {
+      font-size: 1rem;
+      padding: 10px;
       color: #ffd700;
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-decoration: none;
-      display: inline-block;
-      margin-bottom: 5px;
-      transition: color 0.3s ease;
+      align-self: center;
     }
-    .news-item a:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-    .news-item small {
-      color: #bbb;
-      font-size: 0.85rem;
-    }
-    @media (max-width: 480px) {
-      body {
-        padding: 15px;
-      }
-      .container {
-        padding: 20px 15px;
-      }
-      .tip-box {
-        font-size: 1rem;
-      }
-      .news-item a {
-        font-size: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>ข่าวฟุตบอลไทยและทีเด็ดวันนี้</h1>
 
-    <div class="tip-box">
-      <h2>ทีเด็ดวันนี้</h2>
-      <p>บุรีรัมย์ชนะ, เมืองทองเสมอ, การท่าเรือชนะ</p>
-    </div>
+    /* ทีเด็ดวันนี้ */
+    .tip-box {
+      background: #0d47a1;
+      padding: 20px;
+      border-radius: 10px;
+      color: #ffd700;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 30px;
+      box-shadow: 0 6px 18px rgba(255, 215, 0, 0.5);
+    }
 
-    <div id="news">กำลังโหลดข่าว...</div>
-  </div>
-
-  <script>
-    function parseRSS(xml) {
-      const items = xml.querySelectorAll("item");
-      const newsList = [];
-      items.forEach(item => {
-        newsList.push({
-          title: item.querySelector("title").textContent,
-          link: item.querySelector("link").textContent,
-          pubDate: item.querySelector("pubDate").textContent,
-        });
-      });
+    /* ข่าวล่าสุด */
+    .latest-news {
