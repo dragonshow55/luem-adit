@@ -2,121 +2,44 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>แจกภาพหมาแมว ดาวน์โหลดฟรี</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Prompt', sans-serif;
-      background: #fffaf4;
-      color: #333;
-    }
-    header {
-      background: #ffb347;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-    }
-    main {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #fff;
-      border: 1px solid #eee;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-    }
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .card button {
-      background: #ff914d;
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    .card button:hover {
-      background: #e9783d;
-    }
-    .upload-btn {
-      display: block;
-      margin: 30px auto;
-      background: #4CAF50;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1.1rem;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .upload-btn:hover {
-      background: #45a049;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Metallic Style Web</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <header>
+    <div class="logo">METALLIC</div>
+    <nav>
+      <a href="#">หน้าแรก</a>
+      <a href="#">บริการ</a>
+      <a href="#">เกี่ยวกับ</a>
+      <a href="#">ติดต่อ</a>
+    </nav>
+  </header>
 
-<header>แจกภาพหมาแมว โหลดฟรี 🐶🐱</header>
+  <section class="hero">
+    <h1>เว็บดีไซน์แบบเมทัลลิค</h1>
+    <p>เงางาม เท่ห์ เรียบหรู ดูแพง</p>
+  </section>
 
-<main>
-  <button class="upload-btn" onclick="alert('ฟีเจอร์อัปโหลดจะใช้งานได้เมื่อคุณโฮสต์ผ่านเซิร์ฟเวอร์ที่รองรับ เช่น Firebase')">+ อัปโหลดรูปใหม่</button>
-
-  <section class="gallery">
-    <div class="card">
-      <img src="https://images.pexels.com/photos/4587993/pexels-photo-4587993.jpeg" alt="น้องแมว">
-      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
+  <section class="features">
+    <div class="feature-box">
+      <h2>ล้ำสมัย</h2>
+      <p>ดีไซน์ตอบโจทย์ยุคใหม่</p>
     </div>
-    <div class="card">
-      <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="น้องหมา">
-      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
+    <div class="feature-box">
+      <h2>Responsive</h2>
+      <p>ใช้งานได้ทุกหน้าจอ</p>
     </div>
-    <div class="card">
-      <img src="https://images.pexels.com/photos/271889/pexels-photo-271889.jpeg" alt="แมวนอน">
-      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
-    </div>
-    <div class="card">
-      <img src="https://images.pexels.com/photos/979247/pexels-photo-979247.jpeg" alt="หมากำลังยิ้ม">
-      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
-    </div>
-    <div class="card">
-      <img src="https://images.pexels.com/photos/208984/pexels-photo-208984.jpeg" alt="แมวตาโต">
-      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
-    </div>
-    <div class="card">
-      <img src="https://images.pexels.com/photos/573246/pexels-photo-573246.jpeg" alt="หมากับหญ้า">
-      <button onclick="downloadImage(this)">ดาวน์โหลด</button>
+    <div class="feature-box">
+      <h2>ฟรี 100%</h2>
+      <p>ทำเอง ใช้เอง แจกฟรี!</p>
     </div>
   </section>
-</main>
 
-<script>
-function downloadImage(btn) {
-  const img = btn.previousElementSibling;
-  const link = document.createElement('a');
-  link.href = img.src;
-  link.download = 'cute-animal.jpg';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-</script>
-
+  <footer>
+    &copy; 2025 Metallic Studio. All rights reserved.
+  </footer>
 </body>
 </html>
